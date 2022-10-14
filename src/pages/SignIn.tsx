@@ -7,12 +7,18 @@ import { Heading } from '../components/Heading/Heading';
 import { Text } from '../components/Text/Text';
 import { TextInput } from '../components/TextInput/TextInput';
 import { Button } from '../components/Button/Button';
+import axios from 'axios';
 
 export function SignIn() {
   const [isUserSignedIn, setIsUserSignedIn] = useState(false);
 
-  function handleSignIn(event: FormEvent) {
+  async function handleSignIn(event: FormEvent) {
     event.preventDefault();
+
+    await axios.post('/sessions', {
+      email: 'teste@gmail.com',
+      password: '12345678',
+    });
 
     setIsUserSignedIn(true);
   }
